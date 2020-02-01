@@ -201,8 +201,11 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'simple',
-            'filters': ['require_debug_true']
-
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/tmp/debug.log',
         },
         'null': {
             'level': 'DEBUG',
@@ -212,11 +215,11 @@ LOGGING = {
     'loggers': {
         'django': {
             'level': 'DEBUG',
-            'handlers': ['console'],
+            'handlers': ['console','file'],
             'propagate': True,
         },
         'django.request': {
-            'handlers': ['mail_admins'],
+            'handlers': ['mail_admins','file'],
             'level': 'ERROR',
             'propagate': True,
         },
